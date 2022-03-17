@@ -20,7 +20,7 @@ const ProductComponent = () => {
         return ( <div className="col-md-4 mt-3" key={id}>
           <Link to={`/product/${id}`}>
           <Card >
-            <Card.Img style={{width:"200px",height:"200px",marginLeft:"3rem"}} variant="top" src={image} />
+            <Card.Img style={{width:"200px",height:"200px"}} variant="top" src={image} />
             <Card.Body>
               <Card.Title>{title}</Card.Title>
               
