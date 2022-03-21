@@ -13,7 +13,6 @@ const ProductDetais = () => {
   const Navigate = useNavigate();
 
 
-  const [show, setShow] = useState(true);
 
 
   const goBack = () => {
@@ -23,7 +22,7 @@ const ProductDetais = () => {
 
   const { productId } = useParams();
   let product = useSelector((state) => state.product);
-  console.log(product);
+  // console.log(productId);
 
   const { image, title, price, category, description } = product;
   const dispatch = useDispatch();
@@ -51,17 +50,16 @@ const ProductDetais = () => {
 
     <>
     <div className="container" style={{ width: '500px' }}>
-      {Object.keys(product).length === 0 ? (<h2>Loading...</h2>) :
+      {Object.keys(product).length === 0 ? (<h2 style={{margin:"11rem auto auto 12rem"}}>Loading...</h2>) :
         (
-          <Card >
+          <Card  style={{border:"1px solid black",mardinBottom:"2rem"}}>
             <Card.Img variant="top" src={image} style={{ width: '18rem',margin:" 2rem auto auto 6rem" }} />
+            <br/>
             <Card.Body>
               <Card.Title>{title}</Card.Title>
               <br/>
-              <br/>
               <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+             {description}
               </Card.Text>
               <Card.Title>${price}</Card.Title>
               <br></br>

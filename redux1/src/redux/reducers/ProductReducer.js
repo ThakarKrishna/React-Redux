@@ -25,3 +25,14 @@ export const selectedProductsReducer = (state = {}, { type, payload }) => {
     }
 
 }
+
+export const itemReducer = (state =[],{type,payload})=>{
+    switch(type){
+        case actionTypes.ADD_TO_CARTS:
+            return{...state,...payload};
+            default:
+                return state;
+    }
+}
+
+
