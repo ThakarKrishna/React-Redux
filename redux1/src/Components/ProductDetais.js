@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button ,Card} from 'react-bootstrap';
+import { Row,Col,Button ,Card, Container} from 'react-bootstrap';
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { addCart } from '../redux/actios/ProductActions';
+import { delCart } from '../redux/actios/ProductActions';
 import {selectedProduct,removeSelectedProduct} from "../redux/actios/ProductActions";
 
 
@@ -26,6 +28,14 @@ const ProductDetais = () => {
 
   const { image, title, price, category, description } = product;
   const dispatch = useDispatch();
+const addToCart =(data)=>{
+  dispatch(addCart(data))
+  console.log(addCart);
+}
+const RemoveToCart = (data)=>{
+  dispatch(delCart(data))
+}
+
   const fetchProductDetail =  (id) => {
     axios.get(`https://fakestoreapi.com/products/${id}`)
     .then((res)=>{
@@ -49,24 +59,35 @@ const ProductDetais = () => {
   return (
 
     <>
-    <div className="container" style={{ width: '500px' }}>
+    <div className="container"  >
       {Object.keys(product).length === 0 ? (<h2 style={{margin:"11rem auto auto 12rem"}}>Loading...</h2>) :
         (
-          <Card  style={{border:"1px solid black",mardinBottom:"2rem"}}>
-            <Card.Img variant="top" src={image} style={{ width: '18rem',margin:" 2rem auto auto 6rem" }} />
+<Container>
+          <Row>
+            <Col><img src={image} alt={title} height="400px" width="400px"/></Col>
+            <Col>
             <br/>
-            <Card.Body>
-              <Card.Title>{title}</Card.Title>
-              <br/>
-              <Card.Text>
-             {description}
-              </Card.Text>
-              <Card.Title>${price}</Card.Title>
-              <br></br>
-              <Card.Footer className="text-muted">{category}</Card.Footer>
+            <h4 style={{textTransform:"uppercase",color:'black'}}>{category}</h4>
+            <br/>
+            <Card.Title style={{fontSize:"2rem"}}>{title}</Card.Title>
+            <br/>
+            <h2>${price}</h2>
+            <br/>
+            <Card.Text>
+            {description}
+               </Card.Text>
+               <br/>
+               <Button onClick={()=>{
+                 addToCart(product)
+               }} variant="outline-success">Add To Cart</Button>{' '}
+                <Button onClick={()=>{
+                 RemoveToCart(product)
+               }} variant="outline-success">Remove To Cart</Button>{' '}
+            </Col>
 
-            </Card.Body>
-          </Card>
+          </Row>
+          </Container>
+         
         )
       }
     </div>

@@ -21,10 +21,18 @@ export const removeSelectedProduct =() =>{
     }
 }
 
-export const addToCarts =(data)=>{
+
+export const addCart = (data)=>{
     return{
-        type:actionTypes.ADD_TO_CARTS,
+        type:"ADD_ITEM",
         payload:data
     }
 
+}
+
+export const delCart = (data) =>{
+    return{
+        type:"DEL_ITEM",
+        payload:data
+    }
 }

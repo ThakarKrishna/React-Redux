@@ -30,8 +30,7 @@ const ProductComponent = () => {
               <Card.Footer   className="text-muted">{category}</Card.Footer>
               </Card.Body>
               </Link>
-              <Button
-    style={{margin:"1rem auto 1rem 10rem"}} variant="success">Add To Cart</Button>{' '}
+             
           </Card>
       
          
