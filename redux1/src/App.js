@@ -5,7 +5,9 @@ import ProductList from './Components/ProductList'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductDetais from './Components/ProductDetais';
-
+import Cart from './Components/Cart';
+import Home from './Components/Home';
+import "./App.css"
 
 const App = () => {
   return (
@@ -14,8 +16,11 @@ const App = () => {
     <Router>
       <Header/>
       <Routes>
-        <Route path="/" element={<ProductList/>}></Route>
+        <Route path="/" exact element={<Home/>}></Route>
+        <Route path="/product" element={<ProductList/>}></Route>
+
         <Route path="/product/:productId" element={<ProductDetais/>}></Route>
+        <Route path="/cart" element={<Cart/>}></Route>
 
       </Routes>
     </Router>

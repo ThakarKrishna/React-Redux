@@ -32,6 +32,7 @@ export const handleCart =(state=cart,action)=>{
     switch(action.type){
         case "ADD_ITEM":
             const exist = state.find((x)=>x.id === data.id)
+            console.log(exist)
             if(exist){
                 return state.map((x)=>
                     x.id === data.id? {...x,qty:x.qty+1}:x

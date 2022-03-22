@@ -15,13 +15,6 @@ const ProductDetais = () => {
   const Navigate = useNavigate();
 
 
-
-
-  const goBack = () => {
-    Navigate("/")
-
-  }
-
   const { productId } = useParams();
   let product = useSelector((state) => state.product);
   // console.log(productId);
@@ -34,6 +27,10 @@ const addToCart =(data)=>{
 }
 const RemoveToCart = (data)=>{
   dispatch(delCart(data))
+}
+
+const goToCart = ()=>{
+Navigate("/cart")
 }
 
   const fetchProductDetail =  (id) => {
@@ -59,8 +56,8 @@ const RemoveToCart = (data)=>{
   return (
 
     <>
-    <div className="container"  >
-      {Object.keys(product).length === 0 ? (<h2 style={{margin:"11rem auto auto 12rem"}}>Loading...</h2>) :
+    <div className="container mt-5"  >
+      {Object.keys(product).length === 0 ? (<h2 style={{margin:"11rem auto auto 24rem"}}>Loading...</h2>) :
         (
 <Container>
           <Row>
@@ -79,10 +76,12 @@ const RemoveToCart = (data)=>{
                <br/>
                <Button onClick={()=>{
                  addToCart(product)
-               }} variant="outline-success">Add To Cart</Button>{' '}
+               }} variant="outline-dark">Add To Cart</Button>{' '}
                 <Button onClick={()=>{
                  RemoveToCart(product)
-               }} variant="outline-success">Remove To Cart</Button>{' '}
+               }} variant="outline-dark">Remove To Cart</Button>{' '}
+                <Button onClick={goToCart
+               } variant="dark">Go To Cart</Button>{' '}
             </Col>
 
           </Row>

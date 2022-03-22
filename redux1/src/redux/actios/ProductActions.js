@@ -1,10 +1,10 @@
 import { actionTypes } from "../constants/actions-type";
 
 
- export const setProducts  = (products) =>{
+ export const setProducts  = (products, category) =>{
     return{
         type:actionTypes.SET_PRODUCTS,
-        payload:products,
+        payload: category == 'all' ? products : products.filter(item => item.category == category),
     }
 };
 
